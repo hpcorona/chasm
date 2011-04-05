@@ -1,0 +1,115 @@
+	DEFI	X
+	DEFVI	Y,5
+	DEFI	TOTAL
+	DEFVC	CA,100
+	DEFVC	CB,100
+	DEFVC	RES,100
+
+	PUSHCI	0
+	POPI	X
+	
+	PUSHCM	"Hola Mundo"
+	PUSHCM	" Cruel :("
+	ADD
+	POPM	CA
+	
+	PUSHCM	"Hola Mundo"
+	PUSHCM	" Feliz :)"
+	ADD
+	POPM	CB
+	
+	WRITES	CA
+	WRITECR
+	WRITES	CB
+	WRITECR
+
+	WRITEM	"Escriba los valores :)"
+	WRITECR
+
+ciclo1:
+	PUSHI	X
+	PUSHCI	5
+	CMPGE
+	JMPT	continuar1
+
+	WRITEM	"Valor "
+	WRITEI	X
+	WRITEM	": "
+
+	PUSHI	X
+	POPX
+
+	READVI	Y
+
+	PUSHI	X
+	INC
+	POPI	X
+
+	JMP ciclo1
+
+continuar1:
+	PUSHCI	0
+	POPI	X
+
+	PUSHCI	0
+	POPI	TOTAL
+	
+	PUSHCM	"Estos son los valores ingresados: "
+	POPM	RES
+
+ciclo2:
+	PUSHI	X
+	PUSHCI	5
+	CMPGE
+	JMPT	continuar2
+
+	PUSHI	X
+	POPX
+
+	PUSHVI	Y
+	PUSHI	TOTAL
+	ADD
+	POPI	TOTAL
+
+	PUSHCI	0
+	PUSHI	X
+	CMPEQ
+	JMPT	no_desplegar_coma
+	
+	PUSHM	RES
+	PUSHCM	", "
+	ADD
+	POPM	RES
+
+no_desplegar_coma:
+	PUSHM	RES
+	PUSHVI	Y
+	ADD
+	POPM	RES
+
+	PUSHI	X
+	INC
+	POPI	X
+
+	JMP	ciclo2
+
+continuar2:
+	WRITES	RES
+	WRITECR
+	
+	PUSHCM	"TOTAL: "
+	PUSHI	TOTAL
+	ADD
+	WRITEP
+	WRITECR
+	
+	PUSHCC 'A'
+	WRITEP
+	
+	PUSHCD 9.24
+	WRITEP
+	
+	PUSHCI 12
+	WRITEP
+
+	HLT

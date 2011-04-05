@@ -1,0 +1,130 @@
+<ch> ::= <datos> <START> <instrucciones> <END>
+
+<datos> ::= { <declaracion arreglo> | <declaracion variable> }
+
+<declaracion arreglo> ::= <tipo dato> "[" <entero> [ "," <entero> ] "]"
+	<ETIQUETA> { "," <ETIQUETA> }
+
+<declaracion variable> ::= <tipo dato> <ETIQUETA> { "," <ETIQUETA> }
+
+<instrucciones> ::= { <instruccion> }
+
+<instruccion> ::= <asignacion> | <lectura> | <escritura> | <if> |
+	<while> | <for> | <STOP>
+
+<asignacion> ::= <etiqueta> "=" <expresion>
+
+<lectura> ::= <READ> "(" <etiqueta> ")"
+
+<escritura> ::= <print> "(" <expresion> ")"
+
+<print> ::= <PRINT> | <PRINTLN>
+
+<if> ::= <IF> "(" <condicion> ")" <instrucciones>
+	[ <ELSE> <instrucciones> ] <ENDIF>
+
+<while> ::= <WHILE> "(" <condicion> ")" <instrucciones> <ENDWHILE>
+
+<for> ::= <FOR> "(" <asignacion> "," <condicion> "," <asignacion> ")"
+	<instrucciones> <ENDFOR>
+
+<tipo dato> ::= <INTEGER> | <DOUBLE> | <CHAR>
+
+<etiqueta> ::= <ETIQUETA> [ "[" <expresion numero> [ "," <expresion numero> ] "]" ]
+
+<ETIQUETA> ::= <inicio etiqueta> { <caracter etiqueta> }
+
+<inicio etiqueta> ::= <letra minuscula> | <letra mayuscula> | "_" | ":" | "$"
+
+<caracter etiqueta> ::= <inicio etiqueta> | <digito>
+
+<letra minuscula> ::= "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" |
+	"p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"
+
+<letra mayuscula> ::= "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" |
+	"P" | "Q" | "R" | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z"
+
+<digito> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+
+<DECIMAL> ::= { <ENTERO> } "." <ENTERO>
+
+<ENTERO> ::= <DIGITO> | <DIGITO> <ENTERO>
+
+<expresion> ::= <expresion string> | <expresion numero>
+
+<factor> ::= <NUMERO> | <etiqueta> |
+		"-" <NUMERO> |
+		"-" <etiqueta> |
+		"(" <expresion numero> ")"
+
+<termino> ::= <factor> [ <termino rr> ]
+
+<termino rr> ::= "*" <factor> [ <termino rr> ] |
+	"/" <factor> [ <termino rr> ] |
+	"%" <factor> [ <termino rr> ]
+
+<expresion numero> ::= <termino> [ <expresion numero rr> ]
+
+<expresion numero rr> ::= "+" <termino> [ <expresion numero rr> ] |
+	"-" <termino> [ <expresion numero rr> ]
+
+<expresion string> ::= <string> [ <expresion string rr> ]
+
+<expresion string rr> ::= "&" <string> [ <expresion string rr> ] |
+	"&" <expresion numero> [ <expresion string rr> ]
+
+<string> ::= <CADENA STRING> | <etiqueta>
+
+<NUMERO> ::= <ENTERO> | <DECIMAL>
+
+<factor condicion> ::= <expresion string> <operador> <expresion string> |
+	<expresion numero> <operador> <expresion numero> |
+	"(" <condicion> ")"
+
+<condicion> ::= <factor condicion> [ <condicion rr> ]
+
+<condicion rr> ::= <union> <factor condicion> [ <condicion rr> ]
+
+<union> ::= "&&" | "||"
+
+<operador> ::= "==" | ">=" | "<=" | "!=" | ">" | "<"
+
+<CADENA STRING> ::= '"' { <CARACTER CADENA> } '"'
+
+<CARACTER CADENA> ::= '\"' | <CARACTER CADENA VALIDO>
+
+<CARACTER CADENA VALIDO> ::= <LETRA MINUSCULA> | <LETRA MAYUSCULA> | <DIGITO> | "`" | "~" | "!" |
+	"@" | "#" | "$" | "%" | "^" | "&" | "*" | "(" | ")" | "-" | "+" | "=" | "_" | "{" | "}" |
+	"[" | "]" | "|" | "'" | ";" | ":" | "?" | "/" | "." | "," | "<" | ">" | " " | "\t"
+
+<START> ::= "start"
+
+<END> ::= "end"
+
+<PRINT> ::= "print"
+
+<PRINTLN> ::= "println"
+
+<READ> ::= "read"
+
+<IF> ::= "if"
+
+<ENFIF> ::= "endif"
+
+<WHILE> ::= "while"
+
+<ENDWHILE> ::= "endwhile"
+
+<FOR> ::= "for"
+
+<ENDFOR> ::= "endfor"
+
+<ELSE> ::= "else"
+
+<INTEGER> ::= "integer"
+
+<DOUBLE> ::= "double"
+
+<CHAR> ::= "char"
+
+<STOP> ::= "stop"
