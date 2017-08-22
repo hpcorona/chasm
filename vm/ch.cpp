@@ -1648,6 +1648,7 @@ bool asm_popvm() {
 	for (unsigned int i = 0; i < var->dato.datoString->length(); i++) {
 		((char*)direccion_datos)[i] = (*var->dato.datoString)[i];
 	}
+	((char*)direccion_datos)[var->dato.datoString->length()] = 0;
 
 	return true;
 }
@@ -1671,6 +1672,7 @@ bool asm_popm() {
 	for (unsigned int i = 0; i < var->dato.datoString->length(); i++) {
 		((char*)direccion_datos)[i] = (*var->dato.datoString)[i];
 	}
+	((char*)direccion_datos)[var->dato.datoString->length()] = 0;
 
 	return true;
 }

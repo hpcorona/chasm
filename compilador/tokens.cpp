@@ -307,7 +307,9 @@ TIPO_TOKEN clasificar_token(string token) {
 			bool numero = true;
 			for (unsigned int i = 0; i < token.length(); i++) {
 				if (punto == false) {
-					if (expect_digito(data[i]) == false) {
+					if (data[i] == '.') {
+						punto = true;
+					} else if (expect_digito(data[i]) == false) {
 						numero = false;
 						break;
 					}
@@ -315,10 +317,6 @@ TIPO_TOKEN clasificar_token(string token) {
 					if (expect_digito(data[i]) == false) {
 						numero = false;
 						break;
-					} else {
-						if (data[i] == '.') {
-							punto = true;
-						}
 					}
 				}
 			}

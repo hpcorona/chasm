@@ -32,6 +32,8 @@ typedef struct {
 	int dim1;
 	int dim2;
 	long direccion;
+	void* variable;
+	int alignment;
 } SIMBOLO;
 
 typedef struct {
@@ -45,6 +47,7 @@ enum TIPO_RUNTIME {
 };
 
 #define TABLA_SIMBOLOS map<string, SIMBOLO*>
+
 
 bool es_congurente_expresion(TABLA_SIMBOLOS *tabla_simbolos, PRODUCCION *expresion_tipo);
 PRODUCCION* convertir_a_concatenacion_string(TABLA_SIMBOLOS *tabla_simbolos, PRODUCCION *expresion_numero);

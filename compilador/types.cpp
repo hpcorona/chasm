@@ -7,6 +7,8 @@ SIMBOLO* crear_simbolo(TIPO_DATO tipo, DIMENSION dimension, int dim1, int dim2, 
 	simbolo->dim1 = dim1;
 	simbolo->dim2 = dim2;
 	simbolo->direccion = direccion;
+	simbolo->variable = 0;
+	simbolo->alignment = 0;
 	
 	return simbolo;
 }

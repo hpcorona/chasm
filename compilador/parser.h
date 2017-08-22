@@ -52,7 +52,7 @@ typedef struct PRODUCCION {
 	TOKEN* token;
 	PRODUCCION* hijos;
 	PRODUCCION* siguiente;
-};
+} PRODUCCION;
 
 
 PRODUCCION* crear_produccion(TOKEN* token);
